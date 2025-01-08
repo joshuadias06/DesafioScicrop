@@ -21,7 +21,7 @@ def post_detail(request, title):
 #C -> CREATE
 @csrf_exempt #Desabilitei a verificação para evitar erros nas requisicões!
 def add_post(request):
-    if request.method == 'POST' and request.is_ajax():
+    if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             title = request.POST.get('title')
             content = request.POST.get('content')
 
