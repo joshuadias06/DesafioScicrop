@@ -1,4 +1,5 @@
 #IMPORT's
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from .forms import PostForm
@@ -17,13 +18,14 @@ def post_detail(request, title):
 
 #C -> CREATE
 def add_post(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('list_posts')
-    else:
-        form = PostForm()
-    return render(request, 'posts/add_post.html', {'form': form})
+    if request.method == 'POST' and request.is_ajax():
+            title = request.POST.get('title')
+            content = request.POST.get('content')
 
+            if title and content:
+                post = Post(title=title, content=content)
+                return JsonResponse({'success': True, 'message': 'Post criado com sucesso!'})
+            else:
+                return JsonResponse({'success': False, 'message': 'Erro: Dados Invalidos!'})
 
+    return JsonResponse({'success': False, 'message': 'Requisição inválida!'})
