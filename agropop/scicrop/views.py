@@ -21,7 +21,7 @@ def add_post(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(list_posts)
+            return redirect('list_posts')
     else:
         form = PostForm()
     return render(request, 'posts/add_post.html', {'form': form})
