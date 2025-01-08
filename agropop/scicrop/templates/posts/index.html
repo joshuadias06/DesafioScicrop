@@ -10,8 +10,23 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
+    <header class="header">
+        <div class="logo-container">
+            <img src="{% static 'assets/AgroPopLogo.jpg' %}" alt="Logo AgroPop" class="logo">
+            <h1 class="blog-name">AgroPop</h1>
+        </div>
+
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar título..." class="search-input">
+        </div>
+
+        <div class="create-post-container">
+            <a href="{% url 'add_post' %}" class="create-post-button">Criar Postagem</a>
+        </div>
+    </header>
+
+     {% block content %}
+     {% endblock %}
 
     <script src="{% static 'js/script.js' %}"></script>
 </body>
