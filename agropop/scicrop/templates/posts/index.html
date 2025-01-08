@@ -55,7 +55,8 @@
             <span class="close_btn" id="closePopup_btn">&times;</span>
             <h2>Criar Nova Postagem</h2>
             <!-- FORM -->
-            <form id="postForm">
+            <form id="postForm" method="POST">
+                {% csrf_token %}
                 <label for="title">Título:</label>
                 <input type="text" id="title" name="title" required><br><br>
 
