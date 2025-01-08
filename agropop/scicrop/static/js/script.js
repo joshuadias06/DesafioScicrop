@@ -13,7 +13,7 @@ document.getElementById('closePopup_btn').onclick = function() {
 };
 
 document.getElementById('postForm').onsubmit = function(event) {
-    event.preventDefault();
+    event.preventDefault();  // Evita o envio normal do formulário.
 
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
@@ -26,23 +26,21 @@ document.getElementById('postForm').onsubmit = function(event) {
     formData.append("csrfmiddlewaretoken", csrftoken);
 
     // FETCH COM O BACK-END
-    fetch("{% url 'add_post' %}", {
+    fetch(addPostUrl, {
         method: "POST",
         body: formData,
     })
     .then(response => response.json())
     .then(data => {
-        // POSTAGEM CRIADA -> Imprime no console web mensagem de sucesso e da reload na página!
         if (data.success) {
             console.log('Postagem criada com sucesso!');
             window.location.reload();
+            document.getElementById('popup_form').style.display = "none";
         } else {
-            // ERRO NA CRIAÇÃO -> Aparece um alert na parte superior da página!
-            alert('Erro ao criar postagem.');
+            alert('Erro ao criar postagem: ' + data.message);
         }
     })
     .catch(error => {
-        // Imprime no console web mensagem de erro!
-        console.error("Erro:", error);
+        console.log("Erro");
     });
 };
