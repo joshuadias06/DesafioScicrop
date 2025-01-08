@@ -21,12 +21,12 @@
 
         <!-- DIV INPUT DE BUSCA DE POST -->
         <div class="search-container">
-            <input type="text" placeholder="Pesquisar título..." class="search-input">
+            <input type="text" placeholder="Pesquisar postagem..." class="search-input">
         </div>
 
         <!-- DIV BOTÃO DE CRIAÇÃO DE POSTS -->
         <div class="create-post-container">
-            <a href="{% url 'add_post' %}" class="create-post-button">Criar Postagem</a>
+            <button class="create-post-button" id="openPopup_btn"> Criar Postagem</button>
         </div>
     </header>
 
@@ -47,12 +47,27 @@
             <p>Faça uma postagem no AgroPop</p>
             {% endfor %}
         </div>
-
     </section>
+
+    <!--POP-UP FORM -->
+    <div id="popup_form" class="popup_form">
+        <div class="popup_content">
+            <span class="close_btn" id="closePopup_btn">&times;</span>
+            <h2>Criar Nova Postagem</h2>
+            <!-- FORM -->
+            <form id="postForm">
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <label for="content">Conteúdo:</label>
+                <textarea id="content" name="content" required></textarea><br><br>
+            </form>
+        </div>
+    </div>
 
      {% block content %}
      {% endblock %}
 
-    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
