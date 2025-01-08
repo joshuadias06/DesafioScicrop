@@ -7,27 +7,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroPop - Blog</title>
     <link rel="icon" type="image/jpeg" href="{% static 'assets/AgroPopLogo.jpg' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+
+    <!-- HEADER MENU BAR-->
     <header class="header">
+        <!-- DIV LOGO AGROPOP + NOME BLOG -->
         <div class="logo-container">
-            <img src="{% static 'assets/AgroPopLogo.jpg' %}" alt="Logo AgroPop" class="logo">
+            <img src="{% static 'assets/AgroPop.jpg' %}" alt="Logo AgroPop" class="logo">
             <h1 class="blog-name">AgroPop</h1>
         </div>
 
+        <!-- DIV INPUT DE BUSCA DE POST -->
         <div class="search-container">
             <input type="text" placeholder="Pesquisar título..." class="search-input">
         </div>
 
+        <!-- DIV BOTÃO DE CRIAÇÃO DE POSTS -->
         <div class="create-post-container">
             <a href="{% url 'add_post' %}" class="create-post-button">Criar Postagem</a>
         </div>
     </header>
 
+    <!-- SECTION -->
+    <section class="content">
+        <h2>Feed</h2>
+        <div class= "posts">
+            <!-- LOOP DOS POST's => Para cada post no salvo no BD ele irá renderizar aqui.-->
+            {%  for post in posts %}
+                <div class="post">
+                    <h3 class="title">
+                        <a href="{% url 'post_detail' title=post.title %}">{{ post.title }}</a>
+                    </h3>
+                    <p class="text_post">{{ post.content|slice:":200"}}</p>
+
+                </div>
+            {% empty %}
+            <p>Faça um post no AgroPop</p>
+            {% endfor %}
+        </div>
+
+    </section>
+
      {% block content %}
      {% endblock %}
 
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
