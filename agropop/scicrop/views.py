@@ -1,5 +1,5 @@
 #IMPORT's
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from .forms import PostForm
 
@@ -7,8 +7,13 @@ from .forms import PostForm
 
 #R -> READ
 def list_posts(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-date_created')
     return  render(request, 'posts/index.html', {'posts': posts})
+
+#R -> READ
+def post_detail(request, title):
+    post = get_object_or_404(Post, title=title)
+    return render (request, 'posts/post_detail.html', {'post': post})
 
 #C -> CREATE
 def add_post(request):
