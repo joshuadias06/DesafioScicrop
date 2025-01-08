@@ -70,3 +70,39 @@ body{
 .create-post-button:hover {
     background-color: #ff7f00;
 }
+
+/* ESTILO POST FEED*/
+/* Pensar em deixar meu blog com uma designer tipo o do X -> antigo Twitter. */
+.content{
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:#fff;
+    box-shadow: 0px 4px 8px rgba(0, 0,0, 0.1);
+    overflow: hidden;
+}
+
+.posts{
+    margin-top: 20px;
+}
+
+.post{
+    margin-bottom: 15px;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.text_post{
+    color: #555;
+    font-size: 1em;
+    line-height: 1.6;
+}
