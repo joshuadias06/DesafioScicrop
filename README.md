@@ -1,9 +1,11 @@
 # DesafioScicrop
 
-Dei o nome do mini Blog de AgroPop e a partir daqui irei referenciar assim o desafio.
+
+-Apelidei o mini Blog de AgroPop e a partir daqui irei referenciar assim o desafio.
+
 
 # AgroPop
-Descrição de como rodar o AgroPop:
+<h2>Descrição de como rodar o AgroPop:</h2>
 
 # Requisitos
 - Instalar o Python (A versão usada no projeto foi a 3.12).
