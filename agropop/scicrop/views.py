@@ -47,8 +47,8 @@ Este método foi bem mais simples de fazer por conta que já tinha o post, e deu
 a estrutura dele, mudando somente o tipo de requisição que é PUT para o UPDATE.
 """
 @csrf_exempt
-def edit_post(request, title):
-    post = get_object_or_404(Post, title=title)
+def edit_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
 
     if request.method == 'PUT':
         try:
