@@ -1,10 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Post</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <link rel="icon" type="image/jpeg" href="{% static 'assets/AgroPop.jpg' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 
+    <!-- HEADER MENU BAR -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="{% static 'assets/AgroPop.jpg' %}" alt="Logo AgroPop" class="logo">
+            <h1 class="blog-name">AgroPop</h1>
+        </div>
+    </header>
+
+    <!-- DETALHE DO POST -->
+    <section class="content">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+    </section>
 </body>
 </html>
