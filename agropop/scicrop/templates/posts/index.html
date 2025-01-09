@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroPop - Blog</title>
     <link rel="icon" type="image/jpeg" href="{% static 'assets/AgroPopLogo.jpg' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
@@ -74,22 +74,25 @@
 
     <!-- POP-UP FORM PARA EDIÇÃO -->
     <!--Aqui foi reutilizado a estrutura que ja tinha pronta do pop-up de criação -->
-    <div id="editPopup_form" class="editPopup_form">
+    <div id="editPopup_form" class="popup_form">
         <div class="popup_content">
             <span class="close_btn" id="closeEditPopup_btn">&times;</span>
             <h2>Editar Postagem</h2>
             <!-- FORM -->
-            <form id="editPostForm" method="POST">
+            <form id="editPostForm" method="PUT">
                 {% csrf_token %}
                 <label for="editTitle">Título:</label>
                 <input type="text" id="editTitle" name="title" required><br><br>
 
                 <label for="editContent">Conteúdo:</label>
                 <textarea id="editContent" name="content" required></textarea><br><br>
+
                 <button type="submit">Salvar Alterações</button>
             </form>
         </div>
     </div>
+
+
 
      {% block content %}
      {% endblock %}

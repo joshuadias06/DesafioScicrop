@@ -56,31 +56,36 @@ document.getElementById('postForm').onsubmit = function(event) {
 //FETCH EXTRA - PUT.
 const editButtons = document.querySelectorAll('.edit-post');
 
-//ELEMENTOS DO POP-UP
+// Elementos do pop-up de edição
 const editPopup = document.getElementById('editPopup_form');
 const closeEditPopupBtn = document.getElementById('closeEditPopup_btn');
 const editTitleInput = document.getElementById('editTitle');
 const editContentInput = document.getElementById('editContent');
 const editForm = document.getElementById('editPostForm');
 
-//FUNCAO PARA ABRIR O POP-UP DE EDICAO.
-editButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-                console.log('Botão de edição clicado');
 
+// Função para abrir o pop-up de edição quando um botão de edição for clicado
+editButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        console.log('Botão de edição clicado');
+
+        // Obtendo os dados da postagem (título e conteúdo) a partir dos atributos data
         const postTitle = button.getAttribute('data-title') || '';
         const postContent = button.getAttribute('data-content') || 'Conteúdo não disponível';
 
-
+        // Preenchendo os campos do formulário com os dados da postagem
         editTitleInput.value = postTitle;
         editContentInput.value = postContent;
 
-        editPopup.style.display = 'block';
+        // Exibindo o pop-up de edição (alterando o display para flex)
+        editPopup.style.display = 'flex';
         console.log('Pop-up de edição aberto');
     });
-});
+});;
 
+// Função para fechar o pop-up de edição
 closeEditPopupBtn.addEventListener('click', () => {
+    // Fechando o pop-up de edição
     editPopup.style.display = 'none';
     console.log('Pop-up de edição fechado');
 });
