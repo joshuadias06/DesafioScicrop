@@ -79,3 +79,8 @@ editButtons.forEach(button => {
         console.log('Pop-up de edição aberto');
     });
 });
+
+closeEditPopupBtn.addEventListener('click', () => {
+    editPopup.style.display = 'none';
+    console.log('Pop-up de edição fechado');
+});
