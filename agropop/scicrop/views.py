@@ -71,9 +71,9 @@ def edit_post(request, post_id):
 
 # D -> DELETE
 @csrf_exempt
-def delete_post(request, title):
+def delete_post(request, post_id):
     if request.method == 'DELETE':
-        post = get_object_or_404(Post, title=title)
+        post = get_object_or_404(Post, id=post_id)
         try:
             post.delete()
             return JsonResponse({'success': True, 'message': 'Post excluído com sucesso!'})
