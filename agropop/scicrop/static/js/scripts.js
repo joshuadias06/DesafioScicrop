@@ -69,19 +69,16 @@ editButtons.forEach(button => {
     button.addEventListener('click', () => {
         console.log('Botão de edição clicado');
 
-        // Obtendo os dados da postagem (título e conteúdo) a partir dos atributos data
         const postTitle = button.getAttribute('data-title') || '';
         const postContent = button.getAttribute('data-content') || 'Conteúdo não disponível';
-
-        // Preenchendo os campos do formulário com os dados da postagem
         editTitleInput.value = postTitle;
         editContentInput.value = postContent;
 
-        // Exibindo o pop-up de edição (alterando o display para flex)
+
         editPopup.style.display = 'flex';
         console.log('Pop-up de edição aberto');
     });
-});;
+});
 
 // Função para fechar o pop-up de edição
 closeEditPopupBtn.addEventListener('click', () => {
