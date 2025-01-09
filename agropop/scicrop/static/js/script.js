@@ -19,28 +19,36 @@ document.getElementById('postForm').onsubmit = function(event) {
     const content = document.getElementById('content').value;
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-    // Criação de um FormData para enviar como formulário.
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("csrfmiddlewaretoken", csrftoken);
+    // Criação de um objeto com os dados a serem enviados para o back-end
+    const data = {
+        title: title,
+        content: content,
+        csrfmiddlewaretoken: csrftoken
+    };
 
     // FETCH COM O BACK-END
     fetch(addPostUrl, {
         method: "POST",
-        body: formData,
+        headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: JSON.stringify(data),
     })
     .then(response => response.json())
     .then(data => {
+        // POSTAGEM CRIADA -> Imprime no console web mensagem de sucesso e da reload na página!
         if (data.success) {
             console.log('Postagem criada com sucesso!');
             window.location.reload();
-            document.getElementById('popup_form').style.display = "none";
+            document.getElementById('popup_form').style.display = "none";  // Fecha o pop-up após o sucesso.
         } else {
+            // ERRO NA CRIAÇÃO -> Aparece um alert na parte superior da página!
             alert('Erro ao criar postagem: ' + data.message);
         }
     })
     .catch(error => {
+        // Imprime no console web mensagem de erro!
         console.log("Erro");
     });
 };
