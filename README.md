@@ -53,6 +53,21 @@ python manage.py runserver
 ```bash
 http://127.0.0.1:8000/
 ```
+# Desafios Técnicos 
+<h2>Back-End</h2>
+- Eu tenho uma boa experiência em fazer sistemas CRUD simples assim, então a parte do Back-End foi tranquila...
+- Porém, durante o projeto eu estava com a intenção de fazer operações com DELETE e PUT usando o atributo title,porém não tinha como identificar isso no banco de dados para fazer a edição e a deleção de objetos.
+- Com isso eu tive que fazer alterações em duas funções, a de DELETE e a de PUT.
+- E fazer alterações nas URL's de comunicação entre o back-end e o front-end.
+- Eu tenho bastante projetos pessoais em Java e usei bastante dessa bagagem para fazer o back-end
 
+<h2>Front-End</h2>
+- O Front-End foi bastante desafiador pois decidi inovar um pouco criando um pop-up de criação e edição de postãgens, e isso deu bastante trabalho por conta dos estilos dos componentes e da visibilidade dos pop-up's.
+- O que agregou demais para mim foi migrar do VS CODE, onde sempre faço o front-end para fazer no PyCharm, tive uma facilidade melhor em referenciar os atributos dos objetos dentro das tags HTML
+
+<h2>Integração Front-End x Back-End</h2>
+- Essa é uma parte que eu gosto bastante de fazer e sempre fico com ela na faculdade junto ao back-end, desde que aprendi isso tenho facilidade em manipulador o DOM no JacaScript e fazer as requisições para o back-end.
+
+# Implementações
 
 
