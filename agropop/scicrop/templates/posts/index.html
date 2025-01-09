@@ -72,6 +72,25 @@
         </div>
     </div>
 
+    <!-- POP-UP FORM PARA EDIÇÃO -->
+    <!--Aqui foi reutilizado a estrutura que ja tinha pronta do pop-up de criação -->
+    <div id="editPopup_form" class="editPopup_form">
+        <div class="popup_content">
+            <span class="close_btn" id="closeEditPopup_btn">&times;</span>
+            <h2>Editar Postagem</h2>
+            <!-- FORM -->
+            <form id="editPostForm" method="POST">
+                {% csrf_token %}
+                <label for="editTitle">Título:</label>
+                <input type="text" id="editTitle" name="title" required><br><br>
+
+                <label for="editContent">Conteúdo:</label>
+                <textarea id="editContent" name="content" required></textarea><br><br>
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
      {% block content %}
      {% endblock %}
 
