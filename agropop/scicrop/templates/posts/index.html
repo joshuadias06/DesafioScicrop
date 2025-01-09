@@ -33,15 +33,20 @@
     <!-- SECTION -->
     <section class="content">
         <h2>Feed</h2>
-        <div class= "posts">
+        <div class="posts">
             <!-- LOOP DOS POST's => Para cada post no salvo no BD ele irá renderizar aqui.-->
-            {%  for post in posts %}
+            {% for post in posts %}
                 <div class="post">
                     <h3 class="title">
                         <a href="{% url 'post_detail' title=post.title %}">{{ post.title }}</a>
                     </h3>
-                    <p class="text_post">{{ post.content|slice:":200"}}</p>
+                    <p class="text_post">{{ post.content|slice:":200" }}</p>
 
+                    <!-- UPDATE and DELETE buttons -->
+                    <div class="post-actions">
+                        <button class="edit-post" data-title="{{ post.title }}">Editar</button>
+                        <button class="delete-post" data-title="{{ post.title }}">Deletar</button>
+                    </div>
                 </div>
             {% empty %}
             <p>Faça uma postagem no AgroPop</p>
