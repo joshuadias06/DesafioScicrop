@@ -142,3 +142,43 @@ editButtons.forEach(button => {
         };
     });
 });
+
+//FETCH DELETE
+//Selecionado botao de edicao
+const deleteButtons = document.querySelectorAll('.delete-post');
+
+deleteButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const postId = button.getAttribute('data-id');
+        var csrfToken = '{{ csrf_token }}';
+
+        if (postId) {
+            // Confirmação de deleção
+            const confirmDelete = confirm("Tem certeza que deseja excluir esta postagem?");
+            if (confirmDelete) {
+                // Faz a requisição DELETE para deletar a postagem
+                fetch(`/delete_post/${postId}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Postagem deletada com sucesso!');
+                        button.closest('.post-item').remove();
+                    } else {
+                        console.log('Erro ao deletar postagem:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.log('Erro ao fazer a requisição:', error);
+                });
+            }
+        } else {
+            console.log('ID do post não encontrado!');
+        }
+    });
+});
