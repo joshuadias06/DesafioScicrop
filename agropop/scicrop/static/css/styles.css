@@ -20,6 +20,11 @@ body{
     background-color: #4CAF50;
     padding: 10px 20px;
     color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .logo-container {
@@ -125,15 +130,22 @@ h2{
     padding: 20px;
     margin: 15% auto;
     width: 50%;
+    max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .close-btn {
     color: #aaa;
-    float: right;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }
 
 .close-btn:hover,
@@ -141,4 +153,45 @@ h2{
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+#title {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#content {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    min-height: 100px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
 }
