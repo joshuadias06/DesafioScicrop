@@ -7,5 +7,5 @@ urlpatterns = [
     path('post/<str:title>/', views.post_detail, name='post_detail'),  # URL para detalhe do post
     path('add/', views.add_post, name='add_post'),  # URL para criar um novo post
     path('edit_post/<int:post_id>/', edit_post, name='edit_post'),
-    path('delete_post/<str:title>/', delete_post, name='delete_post'),
+    path('delete_post/<int:post_id>/', delete_post, name='delete_post'),
 ]
