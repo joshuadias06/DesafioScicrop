@@ -1,6 +1,6 @@
 #IMPORT's
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
@@ -37,3 +37,29 @@ def add_post(request):
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'message': 'Erro ao processar os dados!'})
     return JsonResponse({'success': False, 'message': 'Requisição inválida!'})
+
+
+#EXTRA METHOD's -> UPDATE and DELETE
+
+# U -> UPDATE
+@csrf_exempt
+def edit_post(request, title):
+    post = get_object_or_404(Post, title=title)
+
+    if request.method == 'PUT':
+        try:
+            data = json.loads(request.body)
+            new_title = data.get('title')
+            new_content = data.get('content')
+
+            if new_title and new_content:
+                post.title = new_title
+                post.content = new_content
+                post.save()
+                return JsonResponse({'success': True, 'message': 'Post atualizado com sucesso!'})
+            else:
+                return JsonResponse({'success': False, 'message': 'Erro: Dados inválidos para atualização!'})
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'message': 'Erro ao processar os dados para atualização!'})
+    else:
+        return HttpResponseNotAllowed(['PUT'], content="Método não permitido. Use o método PUT.")
