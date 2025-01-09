@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Post
 
 
-#CRUD DOS POST's (C -> CREATE, R -> READ, U -> UPDATED, D -> DELETE )
+#CRUD DOS POST's (C -> CREATE, R -> READ, U -> UPDATED, D -> DELETE)
 
 #R -> READ
 def list_posts(request):
@@ -42,6 +42,10 @@ def add_post(request):
 #EXTRA METHOD's -> UPDATE and DELETE
 
 # U -> UPDATE
+"""
+Este método foi bem mais simples de fazer por conta que já tinha o post, e deu para reutilizar 
+a estrutura dele, mudando somente o tipo de requisição que é PUT para o UPDATE.
+"""
 @csrf_exempt
 def edit_post(request, title):
     post = get_object_or_404(Post, title=title)
@@ -63,3 +67,20 @@ def edit_post(request, title):
             return JsonResponse({'success': False, 'message': 'Erro ao processar os dados para atualização!'})
     else:
         return HttpResponseNotAllowed(['PUT'], content="Método não permitido. Use o método PUT.")
+
+
+# D -> DELETE
+@csrf_exempt
+def delete_post(request, title):
+    if request.method == 'DELETE':
+        post = get_object_or_404(Post, title=title)
+        try:
+            post.delete()
+            return JsonResponse({'success': True, 'message': 'Post excluído com sucesso!'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': f'Erro ao excluir post: {str(e)}'})
+    else:
+        return HttpResponseNotAllowed(['DELETE'], content="Método não permitido. Use o método DELETE.")
+
+
+#CRUD COMPLETO -> C -> CREATE, R -> READ, U -> UPDATED, D -> DELETE
