@@ -52,3 +52,30 @@ document.getElementById('postForm').onsubmit = function(event) {
         console.log("Erro");
     });
 };
+
+//FETCH EXTRA - PUT.
+const editButtons = document.querySelectorAll('.edit-post');
+
+//ELEMENTOS DO POP-UP
+const editPopup = document.getElementById('editPopup_form');
+const closeEditPopupBtn = document.getElementById('closeEditPopup_btn');
+const editTitleInput = document.getElementById('editTitle');
+const editContentInput = document.getElementById('editContent');
+const editForm = document.getElementById('editPostForm');
+
+//FUNCAO PARA ABRIR O POP-UP DE EDICAO.
+editButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+                console.log('Botão de edição clicado');
+
+        const postTitle = button.getAttribute('data-title') || '';
+        const postContent = button.getAttribute('data-content') || 'Conteúdo não disponível';
+
+
+        editTitleInput.value = postTitle;
+        editContentInput.value = postContent;
+
+        editPopup.style.display = 'block';
+        console.log('Pop-up de edição aberto');
+    });
+});
