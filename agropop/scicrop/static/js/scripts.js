@@ -53,7 +53,7 @@ document.getElementById('postForm').onsubmit = function(event) {
     });
 };
 
-//FETCH EXTRA - PUT.
+//ABERTURA E PREENCHIMENTO DE POP-UP DE EDICAO - PUT.
 const editButtons = document.querySelectorAll('.edit-post');
 
 // Elementos do pop-up de edição
@@ -85,4 +85,60 @@ closeEditPopupBtn.addEventListener('click', () => {
     // Fechando o pop-up de edição
     editPopup.style.display = 'none';
     console.log('Pop-up de edição fechado');
+});
+
+
+// FETCH PUT
+editButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const postId = button.getAttribute('data-id');
+        const postTitle = button.getAttribute('data-title');
+        const postContent = button.getAttribute('data-content');
+
+        // Preenche os campos do formulário
+        editTitleInput.value = postTitle;
+        editContentInput.value = postContent;
+
+        // Exibe o pop-up
+        editPopup.style.display = 'flex';
+
+        // Função de envio do formulário para o back-end (requisicao PUT)
+        editForm.onsubmit = function(event) {
+            event.preventDefault();  // Evita o envio normal do formulário
+
+            const updatedTitle = editTitleInput.value;
+            const updatedContent = editContentInput.value;
+
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            // Cria o objeto com os dados a serem enviados
+            const data = {
+                title: updatedTitle,
+                content: updatedContent,
+                csrfmiddlewaretoken: csrftoken
+            };
+
+            // Envia a requisição PUT
+            fetch(`/edit_post/${postId}/`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Postagem atualizada com sucesso!');
+                    window.location.reload();  // Atualiza a página após sucesso
+                } else {
+                    alert('Erro ao atualizar postagem: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.log("Error");
+            });
+        };
+    });
 });
