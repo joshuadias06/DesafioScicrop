@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroPop - Blog</title>
-    <link rel="icon" type="image/jpeg" href="{% static 'assets/AgroPopLogo.jpg' %}">
+    <link rel="icon" type="image/jpeg" href="{% static 'assets/AgroPop.jpg' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -15,7 +15,7 @@
     <header class="header">
         <!-- DIV LOGO AGROPOP + NOME BLOG -->
         <div class="logo-container">
-            <img src="{% static 'assets/AgroPop.jpg' %}" alt="Logo AgroPop" class="logo">
+            <img src="{% static 'assets/AgroPopLogo.jpg' %}" alt="Logo AgroPop" class="logo">
             <h1 class="blog-name">AgroPop</h1>
         </div>
 
@@ -72,7 +72,6 @@
 
         <script>
         const addPostUrl = "{% url 'add_post' %}";
-        console.log(addPostUrl);
     </script>
     <script src="{% static 'js/script.js' %}"></script>
 </body>

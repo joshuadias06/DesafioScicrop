@@ -34,8 +34,6 @@ def add_post(request):
                 return JsonResponse({'success': True, 'message': 'Post criado com sucesso!'})
             else:
                 return JsonResponse({'success': False, 'message': 'Erro: Dados inválidos!'})
-
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'message': 'Erro ao processar os dados!'})
-
     return JsonResponse({'success': False, 'message': 'Requisição inválida!'})
