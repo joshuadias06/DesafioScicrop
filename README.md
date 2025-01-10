@@ -1,7 +1,7 @@
 # DesafioScicrop
 
 
--Apelidei o mini Blog de AgroPop e a partir daqui irei referenciar assim o desafio.
+- Apelidei o mini Blog de AgroPop e a partir daqui irei referenciar assim o desafio.
 
 
 # AgroPop
@@ -85,7 +85,7 @@ http://127.0.0.1:8000/
 - delete_post = D -> DELETE
 
 #Tecnologias Usadas:
-[![Techs](https://skillicons.dev/icons?i=python,django,sqlite,html,css,js,git,github&perline=17)](https://skillicons.dev)
+[![Techs](https://skillicons.dev/icons?i=python,django,sqlite,html,css,js,git,github,powershell&perline=17)](https://skillicons.dev)
 
 
 
