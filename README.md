@@ -5,7 +5,7 @@
 
 
 # AgroPop
-<h2>Descrição de como rodar o AgroPop:</h2>
+Descrição de como rodar o AgroPop:
 
 # Requisitos
 - Instalar o Python (A versão usada no projeto foi a 3.12).
@@ -71,5 +71,21 @@ http://127.0.0.1:8000/
 - Essa é uma parte que eu gosto bastante de fazer e sempre fico com ela na faculdade junto ao back-end, desde que aprendi isso tenho facilidade em manipulador o DOM no JacaScript e fazer as requisições para o back-end.
 
 # Implementações
+<h3>Objeto -> Post</h3>
+- id - Automático
+- title -> Preenchido no front-end e mandado para o back-end
+- content -> Preenchido no front-end e mandado para o back-end
+- date_created -> Automático com a hora atual de criação
+
+<h3>Funcões/Metódos</h3>
+- list_posts = R -> READ
+- post_detail = R -> READ
+- add_post = C -> CREATE
+- edit_post = U -> UPDATE
+- delete_post = D -> DELETE
+
+#Tecnologias Usadas:
+(https://skillicons.dev/icons?i=python,django,sqlite,html,css,js,git,github&perline=17)](https://skillicons.dev)
+
 
 
